@@ -1,0 +1,41 @@
+Minca Ecaterina - Ioana 324CAb
+
+Tema acesta a fost despre implementarea unei platforme care simuleaza aplicatii tip
+Netflix in care se pot face mai multe actiuni, spre exemplu login/logout, inregistrare
+a unui nou utilizator sau operatii asupra filmelor.
+
+Citesc din fisier toti utilizatorii, toate filmele si toate actiunile posibile cu ajutorul
+claselor de input si le adaug in clasele speciale pentru asta si anume, User, Movie si Actions,
+iar in DataBase tin toata baza de date cu toate informatiile de la citire, pe care o modific
+ulterior pentru a avea intr-un loc tot ce am nevoie si este actualizata la fiecare modificaare.
+
+Cu ajutorul clasei AllActions, parcung toate actiunile si in functie de tipul de comanda
+change page, respectiv on page, imi actualizez datele curente si se executa actiunile.
+
+In clasa CurrentPage, ma ocup de toate actiunile posibile care pot veni. Astfel, pot avea:
+- login, prin care utilizatorul poate merge pe pagina de respectiva si sa execute actiunea
+cu acest nume; aceasta actiune este posibila daca utilizatorul exista in baza de date
+
+-register in care se adauga un nou utilizator in baza de date
+
+- pagina de filme(movies), va contine utilizatorul curent si toate filmele pe care acesta le
+poate vedea;
+De aici se pot executa actiunile:
+    -search, cu care caut un anumit film
+    -filter, in care sortez dupa anumite criterii filmele disponibile
+Se poate merge si pe pagina "See details" de pe care se pot excuta:
+    -purchase, adica sa cumperi filmul dat ca paramentru la schimbarea paginii
+    -watch, sa vezi filmul respectiv, dar doar daca acesta a fost cumparat inainte
+    -like, care inseamna sa apreciezi un film care a fost atat cumparat, cat si vazut
+    -rate, sa evaluzei filmul daca acesta a fost cumparat si vazut inainte
+
+- pagina de "Upgrades" este cea de pe care poti sa mai cumperi tokens, necesari pentru
+a lua filme sau sa-ti faci contul premium
+
+- pagina de logout, care te scoate din pagina curenta si este necesara autentificarea
+
+Am folosit ca design pattern: singleton la clasa DatabaseInput si un strategy la sortarea
+dupa rating si durata, folosind o intefata comuna pentru acestea
+
+Feedback: mi s-a parut mult mai ok tema asta ca prima tema, dar ar fi mers cateva explicatii
+in plus la cerinta
