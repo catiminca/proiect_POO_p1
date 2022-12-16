@@ -3,18 +3,30 @@ package platform;
 public class GetCurrentPage {
     private String current;
 
-    public GetCurrentPage(String nameCurrent) {
+    /**
+     * @param nameCurrent
+     */
+    public GetCurrentPage(final String nameCurrent) {
         this.current = nameCurrent;
     }
 
+    /**
+     * @return
+     */
     public String getCurrent() {
         return current;
     }
 
-    public void setCurrent(String current) {
+    /**
+     * @param current
+     */
+    public void setCurrent(final String current) {
         this.current = current;
     }
 
-    public void setLastPage(String lastPage) {
+    /**
+     * @param lastPage
+     */
+    public void setLastPage(final String lastPage) {
     }
 }

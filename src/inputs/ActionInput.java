@@ -3,7 +3,7 @@ package inputs;
 import platform.Credentials;
 import platform.Filter;
 
-public class ActionInput {
+public final class ActionInput {
     private String type;
     private String page;
     private Credentials credentials;
@@ -34,7 +34,7 @@ public class ActionInput {
     /**
      *
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
@@ -48,7 +48,7 @@ public class ActionInput {
     /**
      *
      */
-    public void setPage(String page) {
+    public void setPage(final String page) {
         this.page = page;
     }
 
@@ -62,7 +62,7 @@ public class ActionInput {
     /**
      *
      */
-    public void setCredentials(Credentials credentials) {
+    public void setCredentials(final Credentials credentials) {
         this.credentials = credentials;
     }
 
@@ -76,7 +76,7 @@ public class ActionInput {
     /**
      *
      */
-    public void setFeature(String feature) {
+    public void setFeature(final String feature) {
         this.feature = feature;
     }
 
@@ -125,7 +125,7 @@ public class ActionInput {
     /**
      *
      */
-    public void setMovie(String movie) {
+    public void setMovie(final String movie) {
         this.movie = movie;
     }
 }

@@ -13,19 +13,31 @@ public class Sort {
 
     }
 
+    /**
+     * @return
+     */
     public String getRating() {
         return this.rating;
     }
 
-    public void setRating(String rating) {
+    /**
+     * @param rating
+     */
+    public void setRating(final String rating) {
         this.rating = rating;
     }
 
+    /**
+     * @return
+     */
     public String getDuration() {
         return this.duration;
     }
 
-    public void setDuration(String duration) {
+    /**
+     * @param duration
+     */
+    public void setDuration(final String duration) {
         this.duration = duration;
     }
 
@@ -34,7 +46,7 @@ public class Sort {
      * @param movies
      * @param rating
      */
-    public ArrayList<Movie> sortByRating(ArrayList<Movie> movies, String rating) {
+    public ArrayList<Movie> sortByRating(final ArrayList<Movie> movies, final String rating) {
         SortByRating sortByRating = new SortByRating(rating, movies);
         sortByRating.sortInterf(movies);
         return movies;
@@ -45,7 +57,7 @@ public class Sort {
      * @param movies
      * @param duration
      */
-    public void sortByDuration(ArrayList<Movie> movies, String duration) {
+    public void sortByDuration(ArrayList<Movie> movies, final String duration) {
         SortByDuration sortByDuration = new SortByDuration(duration, movies);
         movies = sortByDuration.sortInterf(movies);
     }
@@ -55,7 +67,7 @@ public class Sort {
      * pentru fiecare tip de sortare
      * @param movies
      */
-    public ArrayList<Movie> sort(ArrayList<Movie> movies) {
+    public ArrayList<Movie> sort(final ArrayList<Movie> movies) {
         ArrayList<Movie> sortedMovies;
         sortedMovies = sortByRating(movies, this.rating);
         sortByDuration(sortedMovies, this.duration);
@@ -66,17 +78,19 @@ public class Sort {
 class SortByRating implements SortInterface {
     private final String rating;
 
-    public SortByRating(String rating, ArrayList<Movie> currentMovies) {
+    SortByRating(final String rating, final ArrayList<Movie> currentMovies) {
         this.rating = rating;
         ArrayList<Movie> movies = new ArrayList<>();
         movies.addAll(currentMovies);
     }
 
     @Override
-    public ArrayList<Movie> sortInterf(ArrayList<Movie> movies) {
-        for (Movie movie : movies)
-            if (movie.getRating() == null)
+    public ArrayList<Movie> sortInterf(final ArrayList<Movie> movies) {
+        for (Movie movie : movies) {
+            if (movie.getRating() == null) {
                 movie.setRating(0.0);
+            }
+        }
         if (rating.equals("increasing")) {
             movies.sort(Comparator.comparingDouble(Movie::getRating));
         } else if (rating.equals("decreasing")) {
@@ -88,13 +102,13 @@ class SortByRating implements SortInterface {
 
 class SortByDuration implements SortInterface {
     private final String duration;
-    public SortByDuration(String duration, ArrayList<Movie> currentMovies) {
+     SortByDuration(final String duration, final ArrayList<Movie> currentMovies) {
         this.duration = duration;
         ArrayList<Movie> movies = new ArrayList<>();
         movies.addAll(currentMovies);
     }
     @Override
-    public ArrayList<Movie> sortInterf(ArrayList<Movie> movies) {
+    public ArrayList<Movie> sortInterf(final ArrayList<Movie> movies) {
         if (duration.equals("increasing")) {
             movies.sort(Comparator.comparingDouble(Movie::getDuration));
         } else if (duration.equals("decreasing")) {

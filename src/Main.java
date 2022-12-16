@@ -3,15 +3,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import inputs.DataBaseInput;
-import platform.*;
+import platform.AllActions;
+import platform.DataBase;
+
 
 import java.io.File;
 import java.io.IOException;
 
 
-public class Main {
-    public Main() { }
-    public static void main(String[] args) throws IOException  {
+public final class Main {
+    private Main() { }
+
+    /**
+     * main
+     * @param args
+     * @throws IOException
+     */
+    public static void main(final String[] args) throws IOException  {
 
         ObjectMapper objectMapper = new ObjectMapper();
         DataBaseInput database = objectMapper.readValue(new File(args[0]), DataBaseInput.class);

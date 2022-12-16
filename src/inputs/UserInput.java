@@ -4,10 +4,10 @@ import platform.Credentials;
 
 import java.util.ArrayList;
 
-public class UserInput {
+public final class UserInput {
     private Credentials credentials;
     private int tokensCount;
-    private int freeMoviesNumber = 15;
+    private int freeMoviesNumber;
     private ArrayList<MovieInput> purchasedMovies = new ArrayList<>();
     private ArrayList<MovieInput> watchedMovies = new ArrayList<>();
     private ArrayList<MovieInput> likedMovies = new ArrayList<>();
@@ -20,7 +20,7 @@ public class UserInput {
         return this.credentials;
     }
 
-    public void setCredentials(Credentials credentials) {
+    public void setCredentials(final Credentials credentials) {
         this.credentials = credentials;
     }
 
@@ -28,19 +28,15 @@ public class UserInput {
         return this.tokensCount;
     }
 
-    public void setTokensCount(int tokensCount) {
+    public void setTokensCount(final int tokensCount) {
         this.tokensCount = tokensCount;
-    }
-
-    public int getFreeMoviesNumber() {
-        return this.freeMoviesNumber;
     }
 
     public ArrayList<MovieInput> getPurchasedMovies() {
         return this.purchasedMovies;
     }
 
-    public void setPurchasedMovies(ArrayList<MovieInput> purchasedMovies) {
+    public void setPurchasedMovies(final ArrayList<MovieInput> purchasedMovies) {
         this.purchasedMovies = purchasedMovies;
     }
 
@@ -48,7 +44,7 @@ public class UserInput {
         return this.watchedMovies;
     }
 
-    public void setWatchedMovies(ArrayList<MovieInput> watchedMovies) {
+    public void setWatchedMovies(final ArrayList<MovieInput> watchedMovies) {
         this.watchedMovies = watchedMovies;
     }
 
@@ -56,7 +52,7 @@ public class UserInput {
         return this.likedMovies;
     }
 
-    public void setLikedMovies(ArrayList<MovieInput> likedMovies) {
+    public void setLikedMovies(final ArrayList<MovieInput> likedMovies) {
         this.likedMovies = likedMovies;
     }
 
@@ -64,8 +60,16 @@ public class UserInput {
         return this.ratedMovies;
     }
 
-    public void setRatedMovies(ArrayList<MovieInput> ratedMovies) {
+    public void setRatedMovies(final ArrayList<MovieInput> ratedMovies) {
         this.ratedMovies = ratedMovies;
+    }
+
+    public int getFreeMoviesNumber() {
+        return freeMoviesNumber;
+    }
+
+    public void setFreeMoviesNumber(int freeMoviesNumber) {
+        this.freeMoviesNumber = freeMoviesNumber;
     }
 }
 

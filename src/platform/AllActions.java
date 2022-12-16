@@ -5,13 +5,13 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import java.util.ArrayList;
 
 public class AllActions {
-    ArrayList<Actions> actions;
-    GetCurrentPage getCurrentPage;
-    CurrentUser currentUser;
-    String current;
-    CurrentMovieList currentMovieList;
+    private ArrayList<Actions> actions;
+    private GetCurrentPage getCurrentPage;
+    private CurrentUser currentUser;
+    private String current;
+    private CurrentMovieList currentMovieList;
 
-    public AllActions(DataBase base, String curr, ArrayNode output) {
+    public AllActions(final DataBase base, final String curr, final ArrayNode output) {
         this.actions = new ArrayList<>();
         this.actions.addAll(base.getAllActions());
         this.getCurrentPage = new GetCurrentPage(curr);
@@ -30,20 +30,24 @@ public class AllActions {
      * @param output
      */
 
-    public void actions(CurrentPage currentPage, DataBase base, ArrayNode output) {
+    public void actions(CurrentPage currentPage, DataBase base, final ArrayNode output) {
         int ok = 0;
         for (Actions action : actions) {
             switch (action.getType()) {
                 case "change page" -> {
-                    if ((actions.get(0).getPage().equals("register") || actions.get(0).getPage().equals("login")) && ok == 0) {
-                        currentPage = new CurrentPage(action.getPage(), base, this.current, this.currentUser, this.currentMovieList);
+                    if ((actions.get(0).getPage().equals("register")
+                            || actions.get(0).getPage().equals("login")) && ok == 0) {
+                        currentPage = new CurrentPage(action.getPage(), base, this.current,
+                                this.currentUser, this.currentMovieList);
                         ok = 1;
                     } else if (ok == 1) {
-                        if (currentPage.getUser() == null)
+                        if (currentPage.getUser() == null) {
                             this.currentUser = null;
-                        else
+                        } else {
                             this.currentUser = new CurrentUser(currentPage.getUser());
-                        currentPage = new CurrentPage(action.getPage(), base, this.current, this.currentUser, this.currentMovieList);
+                        }
+                        currentPage = new CurrentPage(action.getPage(), base, this.current,
+                                this.currentUser, this.currentMovieList);
                     }
                     assert currentPage != null;
                     currentPage.changePage(action, output, this.currentUser);
@@ -51,41 +55,89 @@ public class AllActions {
                         this.current = "homepage";
                         this.currentUser = null;
                     }
-                    if ((action.getPage().equals("movies") || action.getPage().equals("see details"))
+                    if ((action.getPage().equals("movies")
+                            || action.getPage().equals("see details"))
                             && currentPage.getSuccespage() == 1) {
                         this.current = currentPage.getGetCurrentPage().getCurrent();
                         if (currentPage.getCurrentMovieList() != null) {
-                            currentMovieList = new CurrentMovieList(currentPage.getCurrentMovieList());
+                            currentMovieList = new CurrentMovieList(currentPage
+                                    .getCurrentMovieList());
                         }
                     }
                 }
                 case "on page" -> {
-                    if (currentPage != null)
+                    if (currentPage != null) {
                         currentPage.executePageCommand(action, output, this.currentUser);
+                    }
                     assert currentPage != null;
                     base = new DataBase(currentPage.getDataBase());
                     if (currentPage.getSucces() == 1) {
                         this.current = currentPage.getGetCurrentPage().getCurrent();
-                        if (currentPage.getUser() != null)
+                        if (currentPage.getUser() != null) {
                             this.currentUser = new CurrentUser(currentPage.getUser());
-                        else
+                        } else {
                             this.currentUser = null;
-                        if (currentPage.getCurrentMovieList() != null)
-                            currentMovieList = new CurrentMovieList(currentPage.getCurrentMovieList());
+                        }
+                        if (currentPage.getCurrentMovieList() != null) {
+                            currentMovieList = new CurrentMovieList(currentPage
+                                    .getCurrentMovieList());
+                        }
                     }
                 }
-                case default -> System.out.println("idk");
-            }
+            };
         }
         currentUser = null;
         current = "homepage";
     }
 
+    /**
+     */
     public ArrayList<Actions> getActions() {
         return actions;
     }
-
-    public void setActions(ArrayList<Actions> actions) {
+    /**
+     */
+    public void setActions(final ArrayList<Actions> actions) {
         this.actions = actions;
+    }
+    /**
+     */
+    public GetCurrentPage getGetCurrentPage() {
+        return getCurrentPage;
+    }
+    /**
+     */
+    public void setGetCurrentPage(final GetCurrentPage getCurrentPage) {
+        this.getCurrentPage = getCurrentPage;
+    }
+    /**
+     */
+    public CurrentUser getCurrentUser() {
+        return currentUser;
+    }
+    /**
+     */
+    public void setCurrentUser(final CurrentUser currentUser) {
+        this.currentUser = currentUser;
+    }
+    /**
+     */
+    public String getCurrent() {
+        return current;
+    }
+    /**
+     */
+    public void setCurrent(final String current) {
+        this.current = current;
+    }
+    /**
+     */
+    public CurrentMovieList getCurrentMovieList() {
+        return currentMovieList;
+    }
+    /**
+     */
+    public void setCurrentMovieList(final CurrentMovieList currentMovieList) {
+        this.currentMovieList = currentMovieList;
     }
 }

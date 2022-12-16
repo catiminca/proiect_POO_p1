@@ -10,7 +10,8 @@ public class Credentials {
     public Credentials() {
     }
 
-    public Credentials(String name, String password, String accountType, String country, String balance) {
+    public Credentials(final String name, final String password, final String accountType,
+                       final String country, final String balance) {
         this.name = name;
         this.password = password;
         this.accountType = accountType;
@@ -18,7 +19,7 @@ public class Credentials {
         this.balance = balance;
     }
 
-    public Credentials(Credentials credentials) {
+    public Credentials(final Credentials credentials) {
         this.name = credentials.getName();
         this.password = credentials.getPassword();
         this.country = credentials.getCountry();
@@ -26,43 +27,73 @@ public class Credentials {
         this.accountType = credentials.getAccountType();
     }
 
+    /**
+     * @return
+     */
     public String getName() {
         return this.name;
     }
 
-    public void setName(String name) {
+    /**
+     * @param name
+     */
+    public void setName(final String name) {
         this.name = name;
     }
 
+    /**
+     * @return
+     */
     public String getPassword() {
         return this.password;
     }
 
-    public void setPassword(String password) {
+    /**
+     * @param password
+     */
+    public void setPassword(final String password) {
         this.password = password;
     }
 
+    /**
+     * @return
+     */
     public String getAccountType() {
         return this.accountType;
     }
 
-    public void setAccountType(String accountType) {
+    /**
+     * @param accountType
+     */
+    public void setAccountType(final String accountType) {
         this.accountType = accountType;
     }
 
+    /**
+     * @return
+     */
     public String getCountry() {
         return this.country;
     }
 
-    public void setCountry(String country) {
+    /**
+     * @param country
+     */
+    public void setCountry(final String country) {
         this.country = country;
     }
 
+    /**
+     * @return
+     */
     public String getBalance() {
         return this.balance;
     }
 
-    public void setBalance(String balance) {
+    /**
+     * @param balance
+     */
+    public void setBalance(final String balance) {
         this.balance = balance;
     }
 }

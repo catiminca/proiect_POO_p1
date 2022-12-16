@@ -7,11 +7,15 @@ public class Filter {
     private Contains contains;
     public Filter() {
     }
-
+    /**
+     */
     public Sort getSort() {
         return this.sort;
     }
 
+    /**
+     * @return
+     */
     public Contains getContains() {
         return this.contains;
     }
@@ -21,14 +25,15 @@ public class Filter {
      * de film sau ambele
      * @param movies
      */
-    public ArrayList<Movie> sortedByContains(ArrayList<Movie> movies) {
+    public ArrayList<Movie> sortedByContains(final ArrayList<Movie> movies) {
         ArrayList<Movie> filtered = new ArrayList<>();
-        if(this.contains.getActors() != null && this.contains.getGenre() != null)
+        if (this.contains.getActors() != null && this.contains.getGenre() != null) {
             filtered = this.contains.sortByContains(movies);
-        else if (this.contains.getActors() != null) {
+        } else if (this.contains.getActors() != null) {
             filtered = this.contains.sortByContainsActors(movies);
-        } else if (this.contains.getGenre() != null)
+        } else if (this.contains.getGenre() != null) {
             filtered = this.contains.sortByContainsGenre(movies);
+        }
         return filtered;
     }
 
@@ -37,7 +42,7 @@ public class Filter {
      * nota pe care o are cat si dupa durata sa
      * @param movies
      */
-    public ArrayList<Movie> sortByBoth(ArrayList<Movie> movies) {
+    public ArrayList<Movie> sortByBoth(final ArrayList<Movie> movies) {
         ArrayList<Movie> sortedMovies;
         sortedMovies = this.sort.sort(movies);
         return sortedMovies;
@@ -50,7 +55,7 @@ public class Filter {
      * @param rating
      * @return
      */
-    public ArrayList<Movie> sortByRating(ArrayList<Movie> movies, String rating) {
+    public ArrayList<Movie> sortByRating(final ArrayList<Movie> movies, final String rating) {
         ArrayList<Movie> sortedMovies;
         sortedMovies = this.sort.sortByRating(movies, rating);
         return sortedMovies;
@@ -61,7 +66,7 @@ public class Filter {
      * @param movies
      * @param duration
      */
-    public void sortByDuration(ArrayList<Movie> movies, String duration) {
+    public void sortByDuration(final ArrayList<Movie> movies, final String duration) {
         this.sort.sortByDuration(movies, duration);
     }
 }

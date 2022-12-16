@@ -1,8 +1,8 @@
 package platform;
 import inputs.ActionInput;
 public class Actions {
-    private String type;
-    private String page;
+    private final String type;
+    private final String page;
     private String feature;
     private final String startWith;
     private Credentials credentials;
@@ -12,7 +12,7 @@ public class Actions {
     private String movie;
     private final Double rate;
 
-    public Actions(ActionInput actionInput) {
+    public Actions(final ActionInput actionInput) {
         this.type = actionInput.getType();
         this.page = actionInput.getPage();
         this.feature = actionInput.getFeature();
@@ -25,7 +25,7 @@ public class Actions {
         this.rate = actionInput.getRate();
     }
 
-    public Actions(Actions actions) {
+    public Actions(final Actions actions) {
         this.type = actions.getType();
         this.page = actions.getPage();
         this.feature = actions.getFeature();
@@ -38,62 +38,70 @@ public class Actions {
         this.rate = actions.getRate();
     }
 
+    /**
+     *
+     */
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
+    /**
+     */
     public String getPage() {
         return page;
     }
-
-    public void setPage(String page) {
-        this.page = page;
-    }
-
+    /**
+     */
     public String getFeature() {
         return feature;
     }
-
-    public void setFeature(String feature) {
+    /**
+     */
+    public void setFeature(final String feature) {
         this.feature = feature;
     }
-
+    /**
+     */
     public String getStartWith() {
         return startWith;
     }
-
+    /**
+     */
     public Credentials getCredentials() {
         return credentials;
     }
-
-    public void setCredentials(Credentials credentials) {
+    /**
+     */
+    public void setCredentials(final Credentials credentials) {
         this.credentials = credentials;
     }
-
+    /**
+     */
     public Filter getFilters() {
         return filters;
     }
-
+    /**
+     */
     public String getObjectType() {
         return objectType;
     }
-
+    /**
+     */
     public String getCount() {
         return count;
     }
-
+    /**
+     */
     public String getMovie() {
         return movie;
     }
-
-    public void setMovie(String movie) {
+    /**
+     */
+    public void setMovie(final String movie) {
         this.movie = movie;
     }
-
+    /**
+     */
     public Double getRate() {
         return rate;
     }
